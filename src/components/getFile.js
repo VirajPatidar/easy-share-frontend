@@ -73,7 +73,9 @@ const GetFile = () => {
             <Grid container justifyContent="center" alignItems="center">
                 <Grid item xs={12} sx={{ textAlign: 'center' }}>
                     <Box mt={6}>
-                        <img src={logo} alt="logo" style={{ width: '220px' }} />
+                        <Link href="/">
+                            <img src={logo} alt="logo" style={{ width: '220px' }} />
+                        </Link>
                     </Box>
                     <Box mt={6} px={2}>
                         <Typography variant='h6' gutterBottom>
@@ -84,7 +86,7 @@ const GetFile = () => {
                 <Grid item xs={12} sm={8} md={5} p={2} sx={{ textAlign: "center" }}>
                     <Box p={3} sx={{ maxWidth: "800px", backgroundColor: "#e0f7fa", border: "1px solid", borderColor: "#006064", borderLeftWidth: "8px", borderLeftStyle: "solid" }}>
                         <Link href={fl} target="_blank" rel="noopener noreferrer" underline="hover">
-                            {fl}
+                            {fl ? fl : "No link to show! Please try again"}
                         </Link>
                         <ClickAwayListener onClickAway={handleTooltipClose}>
                             <Tooltip

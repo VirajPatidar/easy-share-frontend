@@ -18,7 +18,7 @@ const localStorageEffect = key => ({setSelf, onSet}) => {
 export const fileLink = atom({
     key: "fileLink",
     default: "",
-    effects_UNSTABLE: [
-        localStorageEffect('results'),
-    ]
+    // effects_UNSTABLE: [
+    //     localStorageEffect('results'),
+    // ]
 });

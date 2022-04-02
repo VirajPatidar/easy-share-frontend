@@ -46,13 +46,13 @@ const Home = () => {
             submit = false;
             setFileError(true);
             alert("Please select a file!");
-        } 
-        else if(file.length > 1){
+        }
+        else if (file.length > 1) {
             submit = false;
             alert("Only one file can be shared at a time!");
             setFileError(true);
-        } 
-        else if(file[0].size > (20*1000000)){
+        }
+        else if (file[0].size > (20 * 1000000)) {
             submit = false;
             setFileError(true);
             alert("Maximum file size is 20 mb");
@@ -87,7 +87,9 @@ const Home = () => {
             <Grid container justifyContent="center" alignItems="center">
                 <Grid item xs={12} sx={{ textAlign: 'center' }}>
                     <Box mt={6}>
-                        <img src={logo} alt="logo" style={{ width: '220px' }} />
+                        <Link href="/">
+                            <img src={logo} alt="logo" style={{ width: '220px' }} />
+                        </Link>
                     </Box>
                     <Box mt={6} fontSize="h6.fontSize" fontWeight={400} fontFamily="Monospace">
                         <Link href="https://github.com/VirajPatidar/easy-share-frontend" color="inherit" target="_blank" rel="noopener" underline="hover">
@@ -133,7 +135,7 @@ const Home = () => {
                     </Box>
                 </Grid>
             </Grid>
-            <GithubCorner href="https://github.com/VirajPatidar" target="_blank" rel="noopener noreferrer"/>
+            <GithubCorner href="https://github.com/VirajPatidar" target="_blank" rel="noopener noreferrer" />
         </>
     );
 }
