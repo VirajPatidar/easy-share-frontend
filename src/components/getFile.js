@@ -58,7 +58,9 @@ const GetFile = () => {
             })
                 .then((res) => {
                     console.log(res);
-                    window.location.reload();
+                    alert("Email sent successfully")
+                    setFrom("");
+                    setTo("");
                 })
                 .catch(err => {
                     console.log(err);
@@ -117,6 +119,7 @@ const GetFile = () => {
                     </Typography>
                     <Box>
                         <TextField
+                            value={from}
                             variant="outlined"
                             margin="normal"
                             fullWidth
@@ -130,6 +133,7 @@ const GetFile = () => {
                     </Box>
                     <Box>
                         <TextField
+                            value={to}
                             variant="outlined"
                             margin="normal"
                             fullWidth
