@@ -32,9 +32,6 @@ const Home = () => {
     const [file, setFile] = useState([])
     const [fileError, setFileError] = useState(false)
 
-    const [text, setText] = useState("")
-    const [textError, setTextError] = useState(false)
-
     const [loading, setLoading] = useState(false)
     const setFileLink = useSetRecoilState(fileLink)
 

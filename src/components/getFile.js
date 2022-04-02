@@ -6,14 +6,22 @@ import GithubCorner from 'react-github-corner';
 
 
 // MUI
-import { Box, Grid, IconButton, Link, Typography } from "@mui/material";
+import { Box, Button, Grid, IconButton, Link, TextField, Typography } from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import Tooltip from '@mui/material/Tooltip';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
+import axios from 'axios';
 
 const GetFile = () => {
 
     const fl = useRecoilValue(fileLink)
+
+    const [from, setFrom] = useState("")
+    const [fromError, setFromError] = useState(false)
+
+    const [to, setTo] = useState("")
+    const [toError, setToError] = useState(false)
+
     const [open, setOpen] = useState(false);
 
     const handleTooltipClose = () => {
@@ -23,6 +31,42 @@ const GetFile = () => {
     const handleTooltipOpen = () => {
         setOpen(true);
     };
+
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        let submit = true;
+        setFromError(false);
+        setToError(false);
+
+        if (from === "" || !re.test(from)) {
+            submit = false;
+            setFromError(true);
+        }
+        if (to === "" || !re.test(to)) {
+            submit = false;
+            setToError(true);
+        }
+
+        if (submit) {
+            axios.post(`http://localhost:5000/api/files/send`, {
+                "uuid": fl.split("/")[4],
+                "emailTo": to,
+                "emailFrom": from
+            })
+                .then((res) => {
+                    console.log(res);
+                    window.location.reload();
+                })
+                .catch(err => {
+                    console.log(err);
+                    alert("An error occured! Please try again.")
+                });
+        }
+
+    }
 
     return (
         <>
@@ -61,6 +105,50 @@ const GetFile = () => {
                                 </IconButton>
                             </Tooltip>
                         </ClickAwayListener>
+                    </Box>
+                </Grid>
+            </Grid>
+            <Grid container justifyContent="center" alignItems="center">
+                <Grid item xs={12} sm={8} md={5} mt={3} p={2}>
+                    <Typography variant="h6" sx={{ textAlign: 'center' }}>
+                        Enter details to share the file via email:
+                    </Typography>
+                    <Box>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            name="from"
+                            label="From Email"
+                            id="from"
+                            error={fromError}
+                            multiline
+                            onChange={(e) => setFrom(e.target.value)}
+                        />
+                    </Box>
+                    <Box>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                            name="to"
+                            label="To Email"
+                            id="to"
+                            error={toError}
+                            multiline
+                            onChange={(e) => setTo(e.target.value)}
+                        />
+                    </Box>
+                    <Box mt={3}>
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            onClick={handleSubmit}
+                            color="primary"
+                            sx={{ width: '100%' }}
+                        >
+                            Send
+                        </Button>
                     </Box>
                 </Grid>
             </Grid>
