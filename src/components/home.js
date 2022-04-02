@@ -4,6 +4,9 @@ import FileUpload from "react-material-file-upload";
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/logo.png';
 import GithubCorner from 'react-github-corner';
+import { fileLink } from '../atoms';
+import { useSetRecoilState } from 'recoil';
+
 
 //MUI
 import Box from '@mui/material/Box';
@@ -33,6 +36,7 @@ const Home = () => {
     const [textError, setTextError] = useState(false)
 
     const [loading, setLoading] = useState(false)
+    const setFileLink = useSetRecoilState(fileLink)
 
 
     const handleSubmit = e => {
@@ -57,7 +61,6 @@ const Home = () => {
             alert("Maximum file size is 20 mb");
         }
 
-        alert(file[0].size);
 
         if (submit) {
             let form_data = new FormData();
@@ -69,8 +72,8 @@ const Home = () => {
                 .then((res) => {
                     setLoading(false);
                     console.log(res);
-                    // navigate("/results");
-                    // window.location.reload();
+                    setFileLink(res.data.file);
+                    navigate("/file-link");
                 })
                 .catch(err => {
                     console.log(err);

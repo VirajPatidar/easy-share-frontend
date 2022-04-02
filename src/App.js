@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import NotFound from './components/notFound';
 import Home from './components/home';
+import GetFile from './components/getFile';
 
 // MUI
 import { blueGrey } from '@mui/material/colors';
@@ -23,6 +24,7 @@ function App() {
             <Routes>
                 
                 <Route path="/" element={<Home />} exact />
+                <Route path="/file-link" element={<GetFile />} exact />
                 <Route path="*" element={<NotFound />} />
 
             </Routes>
