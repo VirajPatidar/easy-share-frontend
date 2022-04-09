@@ -57,13 +57,11 @@ const GetFile = () => {
                 "emailFrom": from
             })
                 .then((res) => {
-                    console.log(res);
                     alert("Email sent successfully")
                     setFrom("");
                     setTo("");
                 })
                 .catch(err => {
-                    console.log(err);
                     alert("An error occured! Please try again.")
                 });
         }

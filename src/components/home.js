@@ -68,12 +68,10 @@ const Home = () => {
             axios.post(`http://localhost:5000/api/files`, form_data)
                 .then((res) => {
                     setLoading(false);
-                    console.log(res);
                     setFileLink(res.data.file);
                     navigate("/file-link");
                 })
                 .catch(err => {
-                    console.log(err);
                     setLoading(false);
                     alert("An error occured! Please try again.")
                 });
