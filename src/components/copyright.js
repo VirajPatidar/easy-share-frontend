@@ -6,7 +6,7 @@ export default function Copyright() {
 	return (
 		<Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 8, mb: 4 }} >
 			{'Copyright © '}
-			<Link color="inherit" href="https://github.com/VirajPatidar/easy-share-backend">
+			<Link color="inherit" href="https://github.com/VirajPatidar/easy-share-backend" target="_blank" rel="noopener">
 				Easy Share
 			</Link>{' '}
 			{new Date().getFullYear()}
