@@ -1,4 +1,38 @@
-# Getting Started with Create React App
+# Easy Share
+
+_Easy Share application is a project that lets you share files on the go. <br/>
+Share files anytime and anywhere via our email functionality or directly using the link._
+
+_A [backend api](https://github.com/VirajPatidar/easy-share-backend) has been built using **Express.js** to achieve the same._
+
+<br/>
+
+**Link to the website:** [https://easy-file-share.netlify.app/](https://easy-file-share.netlify.app/) <br/>
+
+**Link to backend repo:** [https://github.com/VirajPatidar/easy-share-backend](https://github.com/VirajPatidar/easy-share-backend)
+
+
+### Tech Stack ###
+* React
+* Recoil
+* MUI or MATERIAL-UI
+* react-masonry-css
+* axios
+* react-router
+
+
+### Features ###
+* **Responsive Design**
+* **Material Design**
+* **Share files via email or directly using the generated link**
+
+
+<br/>
+<br/>
+
+- - - -
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
