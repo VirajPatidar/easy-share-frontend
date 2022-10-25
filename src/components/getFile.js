@@ -51,7 +51,7 @@ const GetFile = () => {
         }
 
         if (submit) {
-            axios.post(`https://easy-file-sharing.herokuapp.com/api/files/send`, {
+            axios.post(`https://easy-share.onrender.com/api/files/send`, {
                 "uuid": fl.split("/")[4],
                 "emailTo": to,
                 "emailFrom": from

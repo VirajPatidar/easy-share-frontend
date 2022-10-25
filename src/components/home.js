@@ -65,7 +65,7 @@ const Home = () => {
                 form_data.append('myfile', file[0]);
             }
             setLoading(true);
-            axios.post(`https://easy-file-sharing.herokuapp.com/api/files`, form_data)
+            axios.post(`https://easy-share.onrender.com/api/files`, form_data)
                 .then((res) => {
                     setLoading(false);
                     setFileLink(res.data.file);
